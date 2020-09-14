@@ -2,8 +2,8 @@ package com.lincanbin.carbonforum.config;
 public class APIAddress
 {
 	public static final String WEBSITE_PATH = ""; //Website path, You can leave it blank in most cases.
-	public static final String API_KEY = "12450"; //Application key you set in ```config.php```
-	public static final String API_SECRET = "b40484df0ad979d8ba7708d24c301c38"; //Application secret you set in ```config.php```
+	public static final String API_KEY = "42689"; //Application key you set in ```config.php```
+	public static final String API_SECRET = "gvjhbkjnlkmadsfdgfhgknmfghjdkseijdfnsbnskmdxbncxm"; //Application secret you set in ```config.php```
 /*
     //Debug
     public static final String DOMAIN_NAME = "http://192.168.191.1" + WEBSITE_PATH; // Main domain name
@@ -12,9 +12,9 @@ public class APIAddress
 */
 
     //Real
-    public static final String DOMAIN_NAME = "https://www.94cb.com" + WEBSITE_PATH; // Main domain name
-    public static final String MOBILE_DOMAIN_NAME = "https://m.94cb.com" + WEBSITE_PATH; // Domain name of mobile version
-    public static final String BASIC_API_URL = "https://api.94cb.com" + WEBSITE_PATH; // Domain name of API
+    public static final String DOMAIN_NAME = "https://bantenid.com" + WEBSITE_PATH; // Main domain name
+    public static final String MOBILE_DOMAIN_NAME = "https://m.bantenid.com" + WEBSITE_PATH; // Domain name of mobile version
+    public static final String BASIC_API_URL = "https://app.bantenid.com" + WEBSITE_PATH; // Domain name of API
 
 	//中等头像地址
 	public static String MIDDLE_AVATAR_URL(String userID, String avatarSize){

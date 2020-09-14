@@ -1,1 +1,4 @@
 /build
+
+src/main/java/com/lincanbin/carbonforum/config/**
+!src/main/java/com/lincanbin/carbonforum/config/ExampleAPIAddress.java
