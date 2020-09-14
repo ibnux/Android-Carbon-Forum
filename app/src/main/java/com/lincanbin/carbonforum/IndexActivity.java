@@ -10,17 +10,18 @@ import android.graphics.Color;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v4.content.LocalBroadcastManager;
-import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
 import android.view.View;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
+
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
 import com.lincanbin.carbonforum.adapter.TopicAdapter;
 import com.lincanbin.carbonforum.application.CarbonForumApplication;
 import com.lincanbin.carbonforum.config.APIAddress;
@@ -40,7 +41,6 @@ import com.mikepenz.materialdrawer.model.ProfileDrawerItem;
 import com.mikepenz.materialdrawer.model.ProfileSettingDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IProfile;
-import com.mikepenz.materialdrawer.util.RecyclerViewCacheUtil;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -211,7 +211,7 @@ public class IndexActivity extends AppCompatActivity implements SwipeRefreshLayo
                                 //don't ask but google uses 14dp for the add account icon in gmail but 20dp for the normal icons (like manage account)
                                 new ProfileSettingDrawerItem()
                                         .withName(getString(R.string.change_account))
-                                        .withIcon(GoogleMaterial.Icon.gmd_accounts)
+                                        .withIcon(GoogleMaterial.Icon.gmd_person)
                                         .withOnDrawerItemClickListener(new Drawer.OnDrawerItemClickListener() {
                                             @Override
                                             public boolean onItemClick(View view, int position, IDrawerItem drawerItem) {
@@ -299,12 +299,12 @@ public class IndexActivity extends AppCompatActivity implements SwipeRefreshLayo
             mDrawerBuilder.addDrawerItems(
                     new PrimaryDrawerItem().
                             withName(R.string.title_activity_login).
-                            withIcon(GoogleMaterial.Icon.gmd_account).
+                            withIcon(GoogleMaterial.Icon.gmd_person).
                             withIdentifier(3).
                             withSelectable(false),
                     new PrimaryDrawerItem().
                             withName(R.string.title_activity_register).
-                            withIcon(GoogleMaterial.Icon.gmd_account_add).
+                            withIcon(GoogleMaterial.Icon.gmd_person_add).
                             withIdentifier(4).
                             withSelectable(false)
             );
@@ -326,7 +326,6 @@ public class IndexActivity extends AppCompatActivity implements SwipeRefreshLayo
         mDrawer = mDrawerBuilder.build();
         //if you have many different types of DrawerItems you can magically pre-cache those items to get a better scroll performance
         //make sure to init the cache after the DrawerBuilder was created as this will first clear the cache to make sure no old elements are in
-        RecyclerViewCacheUtil.getInstance().withCacheSize(2).init(mDrawer);
 
         //only set the active selection or active profile if we do not recreate the activity
         if (savedInstanceState == null) {

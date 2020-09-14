@@ -9,11 +9,15 @@ import android.net.Uri;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.Priority;
+import com.bumptech.glide.request.RequestOptions;
 import com.lincanbin.carbonforum.R;
 import com.mikepenz.iconics.IconicsDrawable;
 import com.mikepenz.materialdrawer.util.AbstractDrawerImageLoader;
 import com.mikepenz.materialdrawer.util.DrawerImageLoader;
 import com.mikepenz.materialdrawer.util.DrawerUIUtils;
+
+import cat.ereza.customactivityoncrash.config.CaocConfig;
 
 /**
  * Created by 灿斌 on 10/12/2015.
@@ -47,16 +51,28 @@ public class CarbonForumApplication extends Application {
         });
         */
 
+        CaocConfig.Builder.create()
+                .backgroundMode(CaocConfig.BACKGROUND_MODE_SILENT) //default: CaocConfig.BACKGROUND_MODE_SHOW_CUSTOM
+                .enabled(true)
+                .trackActivities(true) //default: false
+                .minTimeBetweenCrashesMs(2000) //default: 3000
+                .apply();
+
         //initialize and create the image loader logic
         DrawerImageLoader.init(new AbstractDrawerImageLoader() {
             @Override
             public void set(ImageView imageView, Uri uri, Drawable placeholder) {
-                Glide.with(imageView.getContext()).load(uri).placeholder(placeholder).into(imageView);
+                RequestOptions options = new RequestOptions()
+                        .centerCrop()
+                        .placeholder(placeholder)
+                        .error(placeholder)
+                        .priority(Priority.HIGH);
+                Glide.with(imageView.getContext()).load(uri).apply(options).into(imageView);
             }
 
             @Override
             public void cancel(ImageView imageView) {
-                Glide.clear(imageView);
+                Glide.with(imageView.getContext()).clear(imageView);
             }
 
             @Override

@@ -3,13 +3,14 @@ apply plugin: 'com.android.application'
 android {
     signingConfigs {
     }
-    compileSdkVersion 23
-    buildToolsVersion '24.0.0'
+
+    compileSdkVersion 30
+    
     defaultConfig {
-        applicationId "com.lincanbin.carbonforum"
+        applicationId "com.bantenid.forum"
         minSdkVersion 15
         multiDexEnabled true
-        targetSdkVersion 24
+        targetSdkVersion 30
         versionCode 24
         versionName '5.6.1'
         // To disable this functionality (and gain the true advantage and space savings of this Support Library)
@@ -31,16 +32,22 @@ android {
 }
 
 dependencies {
-    compile fileTree(include: ['*.jar'], dir: 'libs')
-    compile('com.mikepenz:materialdrawer:4.6.4@aar') {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    androidTestImplementation('androidx.test.espresso:espresso-core:3.1.0', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    implementation('com.mikepenz:materialdrawer:6.1.2') {
         transitive = true
     }
-    compile 'com.android.support:support-v4:23.3.0'
-    compile 'com.android.support:appcompat-v7:23.3.0'
-    compile 'com.android.support:recyclerview-v7:23.3.0'
-    compile 'com.android.support:cardview-v7:23.3.0'
-    compile 'com.android.support:design:23.3.0'
-    compile 'com.github.bumptech.glide:glide:3.7.0'
-    compile 'de.hdodenhof:circleimageview:2.0.0'
-    compile 'com.mikepenz:google-material-typeface:2.2.0.1@aar'
+    implementation "com.mikepenz:iconics-core:3.2.5"
+    implementation 'com.mikepenz:google-material-typeface:3.0.1.3.original@aar'
+    implementation 'cat.ereza:customactivityoncrash:2.3.0'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'androidx.recyclerview:recyclerview:1.1.0'
+    implementation 'androidx.cardview:cardview:1.0.0'
+    implementation 'com.google.android.material:material:1.2.1'
+    implementation 'com.github.bumptech.glide:glide:4.3.1'
+    implementation 'de.hdodenhof:circleimageview:2.1.0'
+    testImplementation 'junit:junit:4.12'
 }
